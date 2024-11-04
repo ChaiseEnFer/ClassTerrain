@@ -11,9 +11,9 @@ namespace ConsoleApp1
     {
         string Nom;
         string Prenom;
-        List<Bien> Biens;
+        Bien[] Biens = new Bien[0];
 
-        public Proprietaire(string nom, string prenom, List<Bien> biens)
+        public Proprietaire(string nom, string prenom, Bien[] biens)
         {
             Nom = nom;
             Prenom = prenom;
@@ -25,7 +25,7 @@ namespace ConsoleApp1
             toString += String.Format($"Prénom : {this.Prenom}");
             toString += String.Format($"liste des Biens {this.Biens}\n");
 
-            if (Biens == null || Biens.Count == 0) { toString += String.Format("Aucun Biens\n"); }
+            if (Biens == null || Biens.Length == 0) { toString += String.Format("Aucun Biens\n"); }
             return toString;
         }
     }
