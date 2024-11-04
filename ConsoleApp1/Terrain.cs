@@ -3,38 +3,32 @@ using System.Text.RegularExpressions;
 
 namespace ExemplePOO
 {
-    public class Terrain
+    public class Terrain : Bien
     {
-        public string Adresse;
-        public float Superficie;
         public int NbCotesClotures;
         public bool Riviere;
 
-        public Terrain(string adresse, float superficie, int nbCloture, bool riviere)
+        public Terrain(string adresse, float superficie, int nbCotesClotures, bool riviere) : base(adresse, superficie)
         {
-            Adresse = adresse;
-            Superficie = superficie;
-            NbCotesClotures = nbCloture;
+            NbCotesClotures = nbCotesClotures;
             Riviere = riviere;
         }
 
         public override string ToString()
         {
-            string toString = String.Format("Adresse = {0}\n", this.Adresse);
-            toString += String.Format("Superficie = {0}m²\n", this.Superficie);
-            toString += String.Format("Nombre de Clotures = {0}\n", this.NbCotesClotures);
+            string toString = String.Format("Nombre de cotés clorutés = {0}\n", this.NbCotesClotures);
             toString += String.Format("Présence d'une rivière = {0}\n", this.Riviere ? "Oui" : "Non");
-            toString += String.Format("> VALEUR = {0}$", this.EvaluationValeur());
-
+            toString += String.Format("> VALEUR = {0}$\n", this.EvaluationValeur());
             return toString;
         }
 
-        public float EvaluationValeur()
+        public new float EvaluationValeur()
         {
             int facteur = 3000;
 
-            if (this.Riviere) { facteur += 500; }
-            if (this.NbCotesClotures > 3) { facteur += 200; }
+            if (this.Riviere) { facteur += 600; }
+
+            facteur += 100 * this.NbCotesClotures;
 
             if (Regex.IsMatch(this.Adresse, @"\bParis\b")) { facteur += 7000; }
             else if (Regex.IsMatch(this.Adresse, @"\bLyon\b")) { facteur += 2000; }
@@ -50,6 +44,5 @@ namespace ExemplePOO
 
             return valeurPourfinir;
         }
-
     }
 }
