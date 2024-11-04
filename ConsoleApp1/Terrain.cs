@@ -10,20 +10,20 @@ namespace ExemplePOO
         public int NbCotesClotures;
         public bool Riviere;
 
-        public Terrain(string adresse, float superficie, int nbPieces, bool jardin)
+        public Terrain(string adresse, float superficie, int nbCloture, bool riviere)
         {
             Adresse = adresse;
             Superficie = superficie;
-            NbCotesClotures = nbPieces;
-            Riviere = jardin;
+            NbCotesClotures = nbCloture;
+            Riviere = riviere;
         }
 
         public override string ToString()
         {
             string toString = String.Format("Adresse = {0}\n", this.Adresse);
             toString += String.Format("Superficie = {0}m²\n", this.Superficie);
-            toString += String.Format("Nombre de pièces = {0}\n", this.NbCotesClotures);
-            toString += String.Format("Présence d'un jardin = {0}\n", this.Riviere ? "Oui" : "Non");
+            toString += String.Format("Nombre de Clotures = {0}\n", this.NbCotesClotures);
+            toString += String.Format("Présence d'une rivière = {0}\n", this.Riviere ? "Oui" : "Non");
             toString += String.Format("> VALEUR = {0}$", this.EvaluationValeur());
 
             return toString;
@@ -44,7 +44,10 @@ namespace ExemplePOO
 
         public int CoutFinirCloture()
         {
-            return 5;
+            int prixCloture = new Random().Next(100, 1500);
+            int valeurPourfinir = prixCloture * NbCotesClotures;
+
+            return valeurPourfinir;
         }
 
     }
