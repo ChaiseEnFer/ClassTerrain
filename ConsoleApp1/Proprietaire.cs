@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExemplePOO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,21 @@ namespace ConsoleApp1
     {
         string Nom;
         string Prenom;
-        List<string> Biens;
+        List<Bien> Biens;
 
-        public string ToString()
+        public Proprietaire(string nom, string prenom, List<Bien> biens)
         {
-            string toString = String.Format($"Nom : {Nom}\n");
-            toString += String.Format($"Prénom : {Prenom}");
-            toString += String.Format($"liste des Biens {Biens}\n");
+            Nom = nom;
+            Prenom = prenom;
+            Biens = biens;
+        }
+        public override string ToString()
+        {
+            string toString = String.Format($"Nom : {this.Nom}\n");
+            toString += String.Format($"Prénom : {this.Prenom}");
+            toString += String.Format($"liste des Biens {this.Biens}\n");
 
-            if (Biens == null) { toString += String.Format("Aucun Biens\n"); }
+            if (Biens == null || Biens.Count == 0) { toString += String.Format("Aucun Biens\n"); }
             return toString;
         }
     }
