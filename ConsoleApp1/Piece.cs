@@ -1,26 +1,21 @@
-﻿using ExemplePOO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
-namespace ConsoleApp1
+namespace ExemplePOO
 {
     public class Piece
     {
-        int Superficie;
-        string Nom;
+        public int Superficie;
+        public string Nom;
 
         public Piece(int superficie, string nom)
         {
             Superficie = superficie;
             Nom = nom;
         }
+
         public override string ToString()
         {
-            string toString = String.Format($"Nom : {this.Nom}\n");
-            toString += String.Format($"Superficie : {this.Superficie}\n");
+            string toString = String.Format("La pièce {0} fait {1}m²", this.Nom, this.Superficie);
             return toString;
         }
     }
