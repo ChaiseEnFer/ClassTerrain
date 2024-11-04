@@ -44,8 +44,9 @@ namespace ExemplePOO
 
         public int CoutFinirCloture()
         {
+            int nombreCotesRestants = 4 - this.NbCotesClotures;
             int prixCloture = new Random().Next(100, 1500);
-            int valeurPourfinir = prixCloture * NbCotesClotures;
+            int valeurPourfinir = prixCloture * nombreCotesRestants;
 
             return valeurPourfinir;
         }
