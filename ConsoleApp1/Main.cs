@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp1;
+using System;
 
 namespace ExemplePOO
 {
@@ -19,6 +20,15 @@ namespace ExemplePOO
             {
                 Console.WriteLine(B);
             }
+
+            Proprietaire Elodie = new Proprietaire("Martin", "Elodie", new Bien[] { UneMaison, UnTerrain });
+            Console.WriteLine(Elodie);
+
+            Proprietaire Marc = new Proprietaire("Dupont", "Marc", new Bien[] { UneAutreMaison, UneDerniereMaison, UnAutreTerrain });
+            Console.WriteLine(Marc);
+
+            Proprietaire Leo = new Proprietaire("Marin", "Leo", new Bien[0]);
+            Console.WriteLine(Leo);
         }
     }
 }

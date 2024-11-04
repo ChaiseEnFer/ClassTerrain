@@ -15,15 +15,26 @@ namespace ConsoleApp1
 
         public Proprietaire(string nom, string prenom, Bien[] biens)
         {
-            Nom = nom;
-            Prenom = prenom;
-            Biens = biens;
+            this.Nom = nom;
+            this.Prenom = prenom;
+            this.Biens = biens;
         }
+
+        private string ListeBien()
+        {
+            string listeBien = "";
+            foreach (Bien b in this.Biens)
+            {
+                listeBien += String.Format($"{(b.GetType().Name == "Maison" ? "Une" : "Un")}{b.GetType().Name} {b.Adresse}\n");
+
+            }
+            return listeBien;
+        }
+
         public override string ToString()
         {
             string toString = String.Format($"Nom : {this.Nom}\n");
-            toString += String.Format($"Prénom : {this.Prenom}");
-            toString += String.Format($"liste des Biens {this.Biens}\n");
+            toString += ListeBien();
 
             if (Biens == null || Biens.Length == 0) { toString += String.Format("Aucun Biens\n"); }
             return toString;
